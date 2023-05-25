@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+.btn {
+    display: block;
+    width: 200px;
+    height: 30px;
+    background-color: #301934;
+    color: white;
+    margin: 0px auto;
+    cursor: pointer;
+    font-size: 15px;
+    text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+        0px 0px 20px #fafafa;
+}
+.btn:hover {
+    color: rgb(0, 0, 0);
+    transition: all 0.3s;
+}
+.container {
+    width: 1600px;
+}
+.menu {
+    padding: 0px 50px;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    font-size: 20px;
+    line-height: 50px;
+    /* color: #fafafa; */
+    background-color: #301934;
+    font-size: 20px;
+    font-weight: 600;
+    /* color: #fdfdfe; */
+    text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+        0px 0px 20px #b393d3;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu__list {
+    /* text-decoration: none; */
+    height: 100%;
+    display: flex;
+    line-height: 50px;
+}
+.menu__link {
+    margin-left: 150px;
+    line-height: 50px;
+    list-style: none;
+    color: rgb(0, 0, 0);
+}
+a:hover {
+    color: rgb(0, 0, 0);
+    transition: all 0.3s;
+}
+.catalog {
+    height: 2000px;
+    padding-left: 100px;
+    padding-top: 100px;
+}
+.catalog-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+.container {
+}
+.card-wrapper {
+    margin-top: 100px;
+    margin-left: 100px;
+    padding: 10px;
+    background-color: #b393d352;
+    border: 1px solid #30193423;
+    min-height: 400px;
+    width: 400px;
+    border-radius: 5px;
+}
+.card-wrapper img {
+    width: 100%;
+    /* height: 100%; */
+}
+.card-name {
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+.card-date {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+.btn {
+}
+.up-arrow {
+    display: none;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    opacity: 0;
+}
+.up-arrow:hover {
+    bottom: 55px;
+    transition: bottom 0.4s;
+}
+.show {
+    display: block;
+    opacity: 1;
+    transition: opacity 2s;
+}
