@@ -1,16 +1,32 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    font-family: "Roboto", sans-serif;
 }
+/* html {
+    scroll-behavior: smooth;
+} */
 a {
     color: rgb(255, 255, 255);
     text-decoration: none;
+}
+:root {
+    --main-color: #301934;
+    --second-color: #b393d3;
+    --bg-color: #fff;
+    --text-color: #000;
+}
+h1 {
+    font-size: 48px;
+    text-align: center;
+    color: var(--main-color);
+    font-family: "Roboto", sans-serif;
 }
 .btn {
     display: block;
     width: 200px;
     height: 30px;
-    background-color: #301934;
+    background-color: var(--main-color);
     color: white;
     margin: 0px auto;
     cursor: pointer;
@@ -33,7 +49,7 @@ a {
     font-size: 20px;
     line-height: 50px;
     /* color: #fafafa; */
-    background-color: #301934;
+    background-color: var(--main-color);
     font-size: 20px;
     font-weight: 600;
     /* color: #fdfdfe; */
@@ -41,6 +57,7 @@ a {
         0px 0px 20px #b393d3;
     display: flex;
     justify-content: space-between;
+    z-index: 10;
 }
 
 .menu__list {
@@ -48,6 +65,13 @@ a {
     height: 100%;
     display: flex;
     line-height: 50px;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+}
+header .btn {
+    margin: 10px 20px;
 }
 .menu__link {
     margin-left: 150px;
@@ -60,29 +84,37 @@ a:hover {
     transition: all 0.3s;
 }
 .catalog {
-    height: 2000px;
+    padding-bottom: 300px;
+    position: relative;
+    height: 100%;
     padding-left: 100px;
     padding-top: 100px;
 }
-.catalog-wrap {
+.catalog-wrap,
+.catalogShoes,
+.catalogAccessory {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
-.container {
-}
+
 .card-wrapper {
-    margin-top: 100px;
-    margin-left: 100px;
+    margin-top: 40px;
+    margin-left: 50px;
     padding: 10px;
     background-color: #b393d352;
     border: 1px solid #30193423;
     min-height: 400px;
-    width: 400px;
+    width: 250px;
     border-radius: 5px;
 }
 .card-wrapper img {
     width: 100%;
     /* height: 100%; */
+}
+.card-wrapper:hover {
+    scale: 1.05;
+    transition: scale 0.5s;
 }
 .card-name {
     margin-top: 10px;
@@ -95,14 +127,15 @@ a:hover {
     font-size: 20px;
     text-align: center;
 }
-.btn {
-}
+
 .up-arrow {
     display: none;
     position: fixed;
     bottom: 50px;
     right: 50px;
     opacity: 0;
+    /* fill: var(--main-color); */
+    fill: firebrick;
 }
 .up-arrow:hover {
     bottom: 55px;
@@ -112,4 +145,82 @@ a:hover {
     display: block;
     opacity: 1;
     transition: opacity 2s;
+}
+.popup__wrapper {
+    visibility: hidden;
+    padding: 50px 50px;
+    display: block;
+    height: 500px;
+    width: 800px;
+    background-color: #fff;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: fixed;
+    z-index: 10;
+}
+.popup__wrapper input.textarea {
+    margin-top: 30px;
+    height: 100px;
+    width: 600px;
+}
+.inptext {
+    margin-top: 30px;
+}
+.radions {
+    display: flex;
+    margin-top: 30px;
+}
+.radions input {
+    margin-left: 10px;
+    padding-left: 10px;
+    color: #000;
+    background-color: #fff;
+}
+.popup__wrapper .btn {
+    height: 40px;
+    width: 200px;
+    margin-top: 50px;
+}
+.active {
+    visibility: visible;
+}
+
+.popup__wrapper .close {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    padding: 3px;
+}
+.popup__overlay {
+    visibility: hidden;
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #000000;
+    color: saddlebrown;
+    opacity: 0.5;
+    z-index: 2;
+}
+.listCategories {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0a0a0e;
+    height: 100px;
+}
+.listCategories .list {
+    justify-content: center;
+    display: flex;
+    margin-left: -250px;
+    margin-top: 20px;
+}
+.listCategories a:hover {
+    color: #ebb7cc;
 }

@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>katalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&family=Montserrat:wght@400;600;800&family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,59 +19,61 @@
         </a>
             <!-- <a href="#" class="menu__home">Главная</a> -->
         <ul class="menu__list">   
-            <li class="menu__link"> <a href="#" >Одежда</ф></li>
-            <li class="menu__link"> <a href="#" >Обувь</ф></li>
-            <li class="menu__link"> <a href="#" >Спорт-товары</ф></li>
+            <li class="menu__link" data="#clothers"> <a href="#clothers" >Одежда</a></li>
+            <li class="menu__link" data="#clothers"> <a href="#shoes" >Обувь</a></li>
+            <li class="menu__link" data="#clothers"> <a href="#accessory" >Аксессуары</a></li>
         </ul>
-        <a href="#" class="menu__login">Войти</a>
+        <button id="ChangeTheme" class="btn">Сменить тему</button>
     </header>
     <div class="catalog"> 
         <div class="container">
-            <div class="catalog-wrap">
-                <!-- <div class="card-wrapper">
-                    <img src="images/clothes/1.webp" alt="img">
-                    <div class="card-name">Fred Perry
-                        Олимпийка</div>
-                    <div class="card-date">20.05.2023</div>
-                    <button class="btn">Купить</button>
-                </div>
-                <div class="card-wrapper">
-                    <img src="images/clothes/2.webp" alt="img">
-                    <div class="card-name">Feimailis
-                        Платье</div>
-                    <div class="card-date">20.05.2023</div>
-                    <button class="btn">Купить</button>
-                </div>
-                <div class="card-wrapper">
-                    <img src="images/clothes/3.webp" alt="img">
-                    <div class="card-name">Fred Perry
-                        Футболка</div>
-                    <div class="card-date">20.05.2023</div>
-                    <button class="btn">Купить</button>
-                </div>
-                <div class="card-wrapper">
-                    <img src="images/clothes/1.webp" alt="img">
-                    <div class="card-name">Fred Perry
-                        Олимпийка</div>
-                    <div class="card-date">20.05.2023</div>
-                    <button class="btn">Купить</button>
-                </div>
-                <div class="card-wrapper">
-                    <img src="images/clothes/1.webp" alt="img">
-                    <div class="card-name">Fred Perry
-                        Олимпийка</div>
-                    <div class="card-date">20.05.2023</div>
-                    <button class="btn">Купить</button>
-                </div> -->
+            <h1>Одежда</h1>
+            <div class="catalog-wrap" id="clothers">
             </div>
-
+            <h1>Обувь</h1>
+            <div class="catalogShoes" id="shoes"></div>
+            <h1>Аксессуары</h1>
+            <div class="catalogAccessory" id="accessory">
         </div>
     </div>
+    <div class="container">
+        <div class="popup__wrapper">
+            <form action="POST">
+                <p> укажите колличество:</p>
+                <input type="text" class="inptext" placeholder=" ">
+            </form>
+            <div class="radions">
+                <input type="radio" id="white" name="color">
+                <label for="white">Белый</label>
+                <input type="radio" id="black" name="color">  
+                <label for="black">Черный</label>
+                <input type="radio" id="blue" name="color"> 
+                <label for="blue">Синий</label>
+                <input type="radio" id="red" name="color"> 
+                <label for="red">Красный</label>
+            </div>
+            <input type="textarea" class="textarea" placeholder="ваши пожелания">
+
+
+            <button type="submit" class="btn btnAlert">Купить</button>
+            <div class="close">x</div>
+        </div>
+        <div class="popup__overlay"></div>
+        
+    </div>
+    <div class="listCategories">
+        <ul class="list">   
+            <li class="menu__link" data="#clothers"> <a href="#clothers" >Одежда</a></li>
+            <li class="menu__link" data="#clothers"> <a href="#shoes" >Обувь</a></li>
+            <li class="menu__link" data="#clothers"> <a href="#accessory" >Аксессуары</a></li>
+        </ul>
+    </div>
+
     <a href="#up" class="up-arrow">
         <img src="icons/up-arrow.png" alt="">
     </a>
 </body>
-<script src="js/main.js"></script>
+<script type="module" src="js/main.js"></script>
 
 
 </html>

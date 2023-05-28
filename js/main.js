@@ -1,3 +1,6 @@
+import  {ShopList,ShopList2,ShopList3}  from "./BD.js";
+import  {ShowCatalog}  from "./function.js";
+
 // 1._____ scrolling up
 
 // считываем кнопку
@@ -14,7 +17,6 @@ function trackScroll() {
   // считаем высоту окна браузера
   const coords = document.documentElement.clientHeight;
 
-  
   // если вышли за пределы первого окна
   if (scrolled > coords/2) {
     // кнопка появляется
@@ -25,111 +27,65 @@ function trackScroll() {
   }}
 function goTop() {
     if (window.pageYOffset > 0) {
-        window.scrollBy(0,-40)
+        window.scrollBy(0,-30)
     setTimeout(goTop, 0)}
 }
 
-// Дата 
+// Рендер каталогов
+ShowCatalog('.catalog-wrap', ShopList);
+ShowCatalog('.catalogShoes', ShopList2);
+ShowCatalog('.catalogAccessory', ShopList3);
 
-// let clothers = document.querySelectorAll('.card-date')
-// clothers.forEach((item) => {
-//     item.innerText = date;
+//Плавный скролл
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+  link.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      let href = this.getAttribute('href').substring(1);
+      const scrollTarget = document.getElementById(href);
+      const topOffset = document.querySelector('.menu').offsetHeight;
+      // const topOffset = 0; // если не нужен отступ сверху 
+      const elementPosition = scrollTarget.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - topOffset - 60;
+
+      window.scrollBy({
+          top: offsetPosition,
+          behavior: 'smooth'
+      });
+  });
+});
+// Переключение темы
+let changeTheme = document.querySelector('#ChangeTheme'),
+root = document.querySelector(':root');
+console.log(root);
+
+changeTheme.addEventListener('click', () => {
+  console.log(root.style.getPropertyValue("--main-color"));
+  
+  if (root.style.getPropertyValue("--main-color") === '#043c4d') {
+    root.style.setProperty('--main-color', '#301934')
+  }
+  else {
+    root.style.setProperty('--main-color', '#043c4d')
+  }
+})
+// POPUP
+let popup = document.querySelector('.popup__wrapper'),
+    overlay = document.querySelector('.popup__overlay'),
+    buyBtns = document.querySelectorAll('.buy'),
+    close = document.querySelector('.close'),
+    btnAlert = document.querySelector('.btnAlert');
+    btnAlert.addEventListener('click',()=> {
+      alert('Товар добавлен в корзину.')
+    })
+    buyBtns.forEach(item => item.addEventListener('click', ()=> {
+       popup.classList.add('active');
+       overlay.classList.toggle('active');
+      }) 
+      )
+      close.addEventListener('click',()=>{
+        popup.classList.remove('active');
+        overlay.classList.remove('active');
+      })
     
-// });
-//  ___________old del
-// function getDayInfo(data){
-//   let options = {
-//     year: 'numeric',
-//     month: 'long',
-//     weekday: 'long',
-//     day: 'numeric',
-  
-//   };
-// let data2 = new Date(data).toLocaleString("ru", options)
-// console.log(data2.getDay());
-//  console.log(data2);
-// };
-// getDayInfo('01.01.2022')
-
-
-let ShopList = [
-  { model: 'Fred Perry Олимпийка' ,
-    type:  'Олимпийка',
-    date: '2022.06.15',
-    image: 'images/clothes/1.webp',
-  },
-  { model: 'Fred Perry Олимпийка' ,
-  type:  'Олимпийка',
-  date: '2022.01.23',
-  image: 'images/clothes/2.webp',
-},
-  { model: 'Fred Perry Олимпийка' ,
-  type:  'Олимпийка',
-  date: '2023.08.02',
-  image: 'images/clothes/3.webp',
-  }
-]
-let ShopList = [
-  { model: 'Fred Perry Олимпийка' ,
-    type:  'Олимпийка',
-    date: '2022.06.15',
-    image: 'images/clothes/1.webp',
-  },
-  { model: 'Fred Perry Олимпийка' ,
-  type:  'Олимпийка',
-  date: '2022.01.23',
-  image: 'images/clothes/2.webp',
-},
-  { model: 'Fred Perry Олимпийка' ,
-  type:  'Олимпийка',
-  date: '2023.08.02',
-  image: 'images/clothes/3.webp',
-  }
-]
-
-
-
-function ShowCatalog (){
-const catalog = document.querySelector('.catalog-wrap');
-    for (let ShopItem of ShopList ){
-      // cтруктура карточки
-      
-      const card = document.createElement('div'),
-      img = document.createElement('img'),
-      cardName = document.createElement('div'),
-      cardDate = document.createElement('div');
-      cardBtn = document.createElement('button')
-      catalog.append(card);
-      card.append(img);
-      card.append(cardName);
-      card.append(cardDate);
-      card.append(cardBtn);
-      // стили элементов
-      cardName.classList.add('card-name');
-      card.classList.add('card-wrapper');
-      cardName.classList.add('card-name');
-      cardDate.classList.add('card-date');
-      cardBtn.classList.add('btn');
-      //наполнение контентом
-      cardName.innerText = ShopItem['model']
-      cardBtn.innerText = 'Купить'
-      cardDate.innerText = getDayInfo(ShopItem['date']);
-      img.setAttribute('src', ShopItem['image'])
-      img.setAttribute('alt', 'img')
-    }
-  }
-  ShowCatalog();
-
-function getDayInfo(data) {
-  let result;
-  let dayOfWeek = ['воскресенье','понедельник' , 'вторник', 'среда', 'четверг', 'пятница', 'суббота', ]
-  let monthNames = [
-      "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня",
-      "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"
-  ]
-  let date = new Date(data);
-  let day = Math.ceil(date.getDate()/7);
-  return result = dayOfWeek[date.getDay()] +" " + day +" неделя " + monthNames[date.getMonth()] + " " + date.getFullYear() + " года";
-}
-
-  
