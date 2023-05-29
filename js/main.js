@@ -5,7 +5,6 @@ import  {ShowCatalog}  from "./function.js";
 
 // считываем кнопку
 const goTopBtn = document.querySelector(".up-arrow")
-console.log(goTopBtn);
 
 window.addEventListener("scroll", trackScroll);
 // обработчик на нажатии
@@ -18,7 +17,7 @@ function trackScroll() {
   const coords = document.documentElement.clientHeight;
 
   // если вышли за пределы первого окна
-  if (scrolled > coords/2) {
+  if (scrolled > coords) {
     // кнопка появляется
     goTopBtn.classList.add("show");
   } else {
@@ -28,7 +27,7 @@ function trackScroll() {
 function goTop() {
     if (window.pageYOffset > 0) {
         window.scrollBy(0,-30)
-    setTimeout(goTop, 0)}
+    setTimeout(goTop, 5)}
 }
 
 // Рендер каталогов
@@ -58,11 +57,8 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 // Переключение темы
 let changeTheme = document.querySelector('#ChangeTheme'),
 root = document.querySelector(':root');
-console.log(root);
 
 changeTheme.addEventListener('click', () => {
-  console.log(root.style.getPropertyValue("--main-color"));
-  
   if (root.style.getPropertyValue("--main-color") === '#043c4d') {
     root.style.setProperty('--main-color', '#301934')
   }
@@ -89,3 +85,9 @@ let popup = document.querySelector('.popup__wrapper'),
         overlay.classList.remove('active');
       })
     
+
+      // валидация инпута в форме
+      let inpNum = document.querySelector('.inptext');
+      inpNum.addEventListener('input', ()=>{
+        inpNum.value = inpNum.value.replace(/\D/, '')
+      })
