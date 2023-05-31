@@ -39,7 +39,7 @@ h1 {
     transition: all 0.3s;
 }
 .container {
-    width: 1400px;
+    width: 1600px;
 }
 .menu {
     padding: 0px 50px;
@@ -93,9 +93,10 @@ a:hover {
 .catalog-wrap,
 .catalogShoes,
 .catalogAccessory {
+    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 .card-wrapper {
