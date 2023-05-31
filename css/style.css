@@ -16,6 +16,7 @@ a {
 :root {
     --main-color: #301934;
     --second-color: #b393d3;
+    /* --second-color: #0cacdc2a; */
     --bg-color: #fff;
     --text-color: #000;
 }
@@ -42,7 +43,7 @@ h1 {
     transition: all 0.3s;
 }
 .container {
-    width: 1300px;
+    max-width: 1300px;
 }
 .menu {
     padding: 0px 50px;
@@ -106,7 +107,7 @@ a:hover {
     margin-top: 40px;
     margin-left: 50px;
     padding: 10px;
-    background-color: #b393d352;
+    background-color: var(--second-color);
     border: 1px solid #30193423;
     min-height: 400px;
     width: 200px;

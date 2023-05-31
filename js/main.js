@@ -61,9 +61,13 @@ root = document.querySelector(':root');
 changeTheme.addEventListener('click', () => {
   if (root.style.getPropertyValue("--main-color") === '#043c4d') {
     root.style.setProperty('--main-color', '#301934')
+    root.style.setProperty('--second-color', '#b393d3')
+
   }
   else {
     root.style.setProperty('--main-color', '#043c4d')
+    root.style.setProperty('--second-color', '#0cabdc2a')
+
   }
 })
 // POPUP
